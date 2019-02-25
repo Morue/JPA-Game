@@ -1,5 +1,7 @@
 package main.java.com.example.jpa.database.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 
 import javax.persistence.Entity;
@@ -20,6 +22,7 @@ public class Player {
 	private String pseudo;
 	@Column(name = "mail", length = 30, nullable = false)
 	private String mail;
+
 	
 
 	// constructeurs
