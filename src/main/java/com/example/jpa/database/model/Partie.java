@@ -3,15 +3,21 @@ package main.java.com.example.jpa.database.model;
 
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 
 @Entity
+@Table (name="partie")
 public class Partie {
 
 	@Id
@@ -24,6 +30,13 @@ public class Partie {
 	@Column(name = "date_DATE", nullable = false)
 	private LocalDate date_DATE;
 	
+	
+	@ManyToMany(mappedBy="partie")
+	private Set<Player> player;
+	
+	@ManyToOne
+	@JoinColumn(name="id_personnage")
+	private Personnage personnage;
 	
 	public Integer getId_partie() {
 		return id_partie;

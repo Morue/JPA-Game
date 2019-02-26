@@ -1,6 +1,7 @@
 package main.java.com.example.jpa.database.model;
 
 import java.time.LocalDate;
+import java.util.Set;
 
 import javax.persistence.Column;
 
@@ -8,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,7 +27,22 @@ public class Player {
 	@Column(name = "mail", length = 30, nullable = false)
 	private String mail;
 
+	@ManyToMany
+	@JoinTable(name="player_partie",
+
+	joinColumns= @JoinColumn(name=
+	"id_player"
+	, referencedColumnName=
+	"id"),
 	
+	inverseJoinColumns= @JoinColumn(name=
+	"id_partie"
+	, referencedColumnName=
+	"id_partie")
+	)
+
+
+	private Set<Partie> partie;
 
 	// constructeurs
 	public Player() {
